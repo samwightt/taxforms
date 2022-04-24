@@ -1,0 +1,14 @@
+--class-path src
+# --dce full
+# -D shallow-expose
+-L pdf-lib
+-D js-es=6
+-D source-map
+-D analyzer-optimize
+
+
+--each
+
+--main forms.Form1040
+--js out/forms/form1040.js
+--resource pdfs/1040.pdf@1040
