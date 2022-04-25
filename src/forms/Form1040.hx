@@ -2,6 +2,7 @@ package forms;
 
 import forms.NameField.NameFormFields;
 import forms.FilingStatusField.FilingFormFields;
+import macros.*;
 import forms.*;
 
 using forms.Checkbox;
@@ -33,10 +34,13 @@ function spouseNameFields(doc:PDFForm):NameFormFields {
 }
 
 @:expose
+@:build(PdfFormMacro.build())
 class Form1040 {
 	private var document:PDFForm;
 
-	public var filingStatus:FilingStatusField;
+	@checkbox("topmostSubform[0].Page1[0].FilingStatus[0].c1_01[0]")
+	public var singleFilingStatus:Bool;
+	public var filingStatus(default, default):FilingStatusField;
 	public var filerName:NameField;
 	public var spouseName:NameField;
 
